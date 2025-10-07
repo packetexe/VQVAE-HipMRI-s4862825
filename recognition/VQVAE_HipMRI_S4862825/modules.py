@@ -5,7 +5,14 @@ import torch.nn.functional as F
 class Residual(nn.Module):
     def __init__(self, ch: int):
         super().__init__()
-        #add residual conv block
+        self.net = nn.Sequential(
+            nn.Conv2d(ch, ch, 3, padding=1),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(ch, ch, 3, padding=1),
+        )
+    def forward(self, x):
+        return x + self.net(x)
+
 
     def forward(self, x):
         return x
