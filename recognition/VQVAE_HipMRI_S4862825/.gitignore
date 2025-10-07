@@ -13,6 +13,10 @@
 *.zip
 *.tar
 *.tar.gz
+*.nii
+*.nii.gz
+*.npz
+*.npy
 
 # Python cache and environment
 __pycache__/
