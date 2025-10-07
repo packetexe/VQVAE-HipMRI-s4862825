@@ -53,6 +53,17 @@ class Decoder(nn.Module):
     def forward(self, z): 
         return self.net(z)
 
+class Codebook(nn.Module):
+    def __init__(self, n_codes: int = 512, dim: int = 64, beta: float = 0.25):
+        super().__init__()
+        self.beta = beta
+        self.embed = nn.Embedding(n_codes, dim)
+        nn.init.uniform_(self.embed.weight, -1.0/n_codes, 1.0/n_codes)
+
+    def forward(self, z_e):  # (B, D, H, W)
+        # Need to implement nearest-code lookup, losses, straight-through
+        return z_e, torch.tensor(0.0, device=z_e.device), torch.tensor(0.0, device=z_e.device)
+
 class VQVAE(nn.Module):
     def __init__(self):
         super().__init__()
