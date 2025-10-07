@@ -28,13 +28,6 @@ __pycache__/
 .env
 .envrc
 
-# Logs & Jupyter
-*.log
-logs/
-wandb/
-tb_logs/
-.ipynb_checkpoints/
-
 # OS / Editor
 .DS_Store
 Thumbs.db
