@@ -1,0 +1,38 @@
+# Prevent committing datasets or models
+/data/
+/../data/
+/**/data/
+/**/runs/
+/**/checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.npz
+*.npy
+*.zip
+*.tar
+*.tar.gz
+
+# Python cache and environment
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.venv/
+.env
+.envrc
+
+# Logs & Jupyter
+*.log
+logs/
+wandb/
+tb_logs/
+.ipynb_checkpoints/
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
