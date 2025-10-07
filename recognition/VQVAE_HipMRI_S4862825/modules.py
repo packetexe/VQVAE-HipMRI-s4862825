@@ -88,9 +88,16 @@ class Decoder(nn.Module):
         return self.net(z)
 
 class VQVAE(nn.Module):
-    def __init__(self):
+    def __init__(self, img_ch=1, hidden=128, z_dim=64, n_codes=512, beta=0.25):
         super().__init__()
-        #Wire encoder/decoder and VQ block
+        self.enc = Encoder(img_ch, hidden, z_dim)
+        self.vq  = Codebook(n_codes, z_dim, beta)
+        self.dec = Decoder(z_dim, hidden, img_ch)
 
     def forward(self, x):
-        return x, torch.tensor(0.0), {}
+        z_e = self.enc(x)
+        z_q, vq_loss, perp = self.vq(z_e)
+        x_hat = self.dec(z_q)
+        recon = F.mse_loss(x_hat, x)
+        total = recon + vq_loss
+        return x_hat, total, {"recon": recon.detach(), "vq": vq_loss.detach(), "perp": perp.detach()}
