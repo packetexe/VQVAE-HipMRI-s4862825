@@ -32,6 +32,13 @@ def main():
                 save_image(grid, os.path.join(out_dir, "test_recons.png"))
     print(f"Test SSIM: {float(np.mean(scores)):.4f}")
 
+    # Save final SSIM to text file
+    test_ssim = float(np.mean(scores)) if scores else 0.0
+    print(f"Test SSIM: {test_ssim:.4f}")
+    with open("final_ssim.txt", "w") as f:
+        f.write(f"Test SSIM: {test_ssim:.4f}\n")
+    print("Saved final_ssim.txt")
+
 def batch_ssim(x, y):
     a = x.clamp(0,1).cpu().numpy()
     b = y.clamp(0,1).cpu().numpy()
