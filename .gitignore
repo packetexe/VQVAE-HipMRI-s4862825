@@ -20,6 +20,17 @@
 *.npz
 *.npy
 
+# Ignore all PNG/JPG images by default (large dataset slices)
+*.png
+*.jpg
+*.jpeg
+
+# Allow small example images in readme_images/
+!readme_images/
+!readme_images/*.png
+!readme_images/*.jpg
+!readme_images/*.jpeg
+
 # Python cache and environment
 __pycache__/
 *.pyc
