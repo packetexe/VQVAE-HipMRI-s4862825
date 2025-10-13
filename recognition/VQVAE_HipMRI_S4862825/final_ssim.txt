@@ -1,1 +1,1 @@
-Test SSIM: 0.8356
+Test SSIM: 0.8389
