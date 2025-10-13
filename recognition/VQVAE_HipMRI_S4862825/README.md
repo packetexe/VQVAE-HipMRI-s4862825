@@ -112,7 +112,7 @@ Further more, skimage.metrics.structural_similarity and data_range=1.0 is used t
 
 ## Results
 
-The final SSIM score for the model was **0.8356** as per recorded in the final_ssim.txt
+The final SSIM score for the model was **0.8389** as per recorded in the final_ssim.txt
 
 ![reconstructed_images](readme_images/test_recons.png)
 
@@ -128,3 +128,23 @@ To reproduce the result:
 3. Run train.py
 4. Then run predict.py
 5. Finally, the script will save the new image into readme_images/ and then print the Test SSIM as well as save it into final_ssim.txt
+
+## Future improvements
+
+Architecture wise, I could increase codebook size or try VQVAE2 for sharper detail. Furthermore, adding perceptual losses alongside MSE to reduce blur.
+
+Data processing wise, a slice-quality filter could be implemented to ensure that only high-quality MRI slices are used for training and evaluation. This would improve the overall reconstruction accuracy.
+
+## Reference
+
+###### modules.py ######
+1. Van den Oord, Vinyals, Kavukcuoglu. Neural Discrete Representation Learning. NeurIPS 2017. https://arxiv.org/abs/1711.00937
+2. Razavi, Van den Oord, Vinyals. VQ-VAE-2. NeurIPS 2019 https://arxiv.org/abs/1906.00446 (hierarchical extension).
+3. Bengio, Léonard, Courville. Estimating or Propagating Gradients Through Stochastic Neurons. 2013 https://arxiv.org/abs/1308.3432 (STE background).
+4. He, Zhang, Ren, Sun. Deep Residual Learning for Image Recognition. CVPR 2016 https://arxiv.org/abs/1512.03385 (residual blocks).
+5. Radford, Metz, Chintala. Unsupervised Representation Learning with DCGAN. ICLR 2016 https://arxiv.org/abs/1511.06434 (encoder/decoder conv stacks).
+
+###### General reference ######
+1. PyTorch Official Documentation – “Training a VAE/VQ-VAE in PyTorch.” https://pytorch.org/tutorials/
+2. GitHub Docs – “About READMEs.” https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes
+3. ChatGPT (OpenAI, 2025) – used for assistance in formatting, proofreading, and clarifying explanations within the README.md file. 
